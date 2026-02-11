@@ -1,0 +1,160 @@
+---
+interface NewsArticle {
+	title: string;
+	description: string;
+	url: string;
+	urlToImage?: string;
+	publishedAt: string;
+	source: {
+		name: string;
+	};
+}
+
+let articles: NewsArticle[] = [];
+
+try {
+	const response = await fetch('https://newsapi.org/v2/top-headlines?category=technology&pageSize=6&apiKey=demo', {
+		headers: {
+			'User-Agent': 'Astro/1.0'
+		}
+	});
+
+	if (response.ok) {
+		const data = await response.json();
+		articles = data.articles || [];
+	}
+} catch (error) {
+	console.log('Using fallback news data');
+}
+
+if (articles.length === 0) {
+	articles = [
+		{
+			title: "The Rise of Platform Engineering",
+			description: "How platform engineering is transforming DevOps practices and improving developer experience across organizations.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "Tech Insights" }
+		},
+		{
+			title: "Kubernetes Best Practices for 2026",
+			description: "Essential strategies for managing Kubernetes clusters at scale with improved security and performance.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "Cloud Native News" }
+		},
+		{
+			title: "CI/CD Pipeline Optimization Techniques",
+			description: "Learn how to reduce deployment times and improve reliability with modern CI/CD pipeline optimizations.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "DevOps Weekly" }
+		},
+		{
+			title: "Infrastructure as Code: Terraform vs Pulumi",
+			description: "A comprehensive comparison of popular IaC tools and when to use each one for your infrastructure needs.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "Infrastructure Today" }
+		},
+		{
+			title: "Observability in Microservices",
+			description: "Essential monitoring and logging strategies for distributed systems and microservices architectures.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "SRE Digest" }
+		},
+		{
+			title: "Container Security Best Practices",
+			description: "Protect your containerized applications with these essential security measures and scanning tools.",
+			url: "#",
+			urlToImage: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+			publishedAt: new Date().toISOString(),
+			source: { name: "Security Focus" }
+		}
+	];
+}
+
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+---
+
+<section id="news" class="min-h-screen py-20 px-6 bg-gradient-to-b from-slate-950 to-navy-950">
+	<div class="container mx-auto max-w-7xl">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl font-bold mb-4">
+				<span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+					Latest Tech
+				</span>
+				<span class="bg-gradient-to-r from-blue-400 to-navy-400 bg-clip-text text-transparent">
+					{' '}News
+				</span>
+			</h2>
+			<p class="text-slate-400 text-lg max-w-2xl mx-auto">
+				Stay updated with the latest trends in DevOps, SRE, and cloud infrastructure
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{articles.map((article) => (
+				<article class="group bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden hover:border-navy-700 transition-all duration-300 hover:shadow-lg hover:shadow-navy-900/50 hover:-translate-y-1">
+					{article.urlToImage && (
+						<div class="relative h-48 overflow-hidden bg-slate-800">
+							<img
+								src={article.urlToImage}
+								alt={article.title}
+								class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+								loading="lazy"
+							/>
+							<div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+						</div>
+					)}
+
+					<div class="p-6">
+						<div class="flex items-center gap-2 mb-3 text-sm">
+							<span class="px-3 py-1 bg-navy-900/50 border border-navy-700 rounded-full text-navy-300">
+								{article.source.name}
+							</span>
+							<span class="text-slate-500">
+								{formatDate(article.publishedAt)}
+							</span>
+						</div>
+
+						<h3 class="text-xl font-semibold text-white mb-3 line-clamp-2 group-hover:text-blue-400 transition-colors">
+							{article.title}
+						</h3>
+
+						<p class="text-slate-400 mb-4 line-clamp-3 text-sm leading-relaxed">
+							{article.description}
+						</p>
+
+						<a
+							href={article.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium text-sm group/link"
+						>
+							Read more
+							<svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</article>
+			))}
+		</div>
+
+		<div class="text-center mt-12">
+			<p class="text-slate-500 text-sm">
+				News powered by NewsAPI
+			</p>
+		</div>
+	</div>
+</section>
