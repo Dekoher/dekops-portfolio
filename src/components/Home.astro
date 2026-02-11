@@ -1,3 +1,8 @@
+---
+import { Image } from 'astro:assets';
+import dekopsAvatar from '../assets/dekops-avatar.png';
+---
+
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 	<div class="absolute inset-0 bg-gradient-to-br from-navy-900 via-slate-950 to-slate-950"></div>
 
@@ -30,10 +35,10 @@
 
 			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 				<a href="#news" class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-navy-600 hover:from-blue-500 hover:to-navy-500 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-105">
-					Explore Tech News
+					Read Latest Posts
 					<span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
 				</a>
-				<a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 rounded-lg font-semibold text-white transition-all duration-300 backdrop-blur-sm">
+				<a href="https://github.com/Dekoher" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 rounded-lg font-semibold text-white transition-all duration-300 backdrop-blur-sm">
 					View GitHub
 				</a>
 			</div>
@@ -59,5 +64,91 @@
 		<svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
 		</svg>
+	</div>
+</section>
+
+<section class="py-20 px-6 bg-gradient-to-b from-slate-950 to-navy-950 border-t border-slate-800/50">
+	<div class="container mx-auto max-w-6xl">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+			<div class="relative">
+				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-navy-600 rounded-2xl blur opacity-25"></div>
+        <Image
+          src={dekopsAvatar}
+          alt="Diego Herrera"
+          class="relative w-full rounded-2xl shadow-2xl object-cover h-96"
+        />
+			</div>
+
+			<div>
+				<div class="mb-6">
+					<h2 class="text-4xl md:text-5xl font-bold mb-2">
+						<span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+							Hi, I'm
+						</span>
+						<span class="bg-gradient-to-r from-blue-400 to-navy-400 bg-clip-text text-transparent">
+							{' '}Diego Herrera
+						</span>
+					</h2>
+					<p class="text-xl text-blue-400 font-semibold">DevOps & SRE Engineer</p>
+				</div>
+
+				<p class="text-lg text-slate-300 mb-6 leading-relaxed">
+					I'm a passionate engineer with 7 years of professional experience in frontend development, now transitioning into the exciting world of DevOps and Site Reliability Engineering. My journey from building beautiful user interfaces to architecting robust infrastructure has given me a unique perspective on bridging development and operations.
+				</p>
+
+				<div class="space-y-4 mb-8">
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0">
+							<div class="flex items-center justify-center h-10 w-10 rounded-lg bg-blue-500/20 border border-blue-500/50">
+								<svg class="h-6 w-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+								</svg>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-white font-semibold mb-1">Infrastructure as Code</h3>
+							<p class="text-slate-400">Passionate about Terraform, Pulumi, and modern IaC practices</p>
+						</div>
+					</div>
+
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0">
+							<div class="flex items-center justify-center h-10 w-10 rounded-lg bg-navy-500/20 border border-navy-500/50">
+								<svg class="h-6 w-6 text-navy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+								</svg>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-white font-semibold mb-1">Scalable Systems</h3>
+							<p class="text-slate-400">Building observability and monitoring solutions for distributed systems</p>
+						</div>
+					</div>
+
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0">
+							<div class="flex items-center justify-center h-10 w-10 rounded-lg bg-blue-500/20 border border-blue-500/50">
+								<svg class="h-6 w-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+								</svg>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-white font-semibold mb-1">Cloud Platforms</h3>
+							<p class="text-slate-400">Expertise in AWS, Kubernetes, Docker, and containerization</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex gap-3">
+					<a href="https://www.linkedin.com/in/diegoher-dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500 text-blue-400 rounded-lg transition-colors">
+						LinkedIn
+					</a>
+					<a href="https://x.com/Diegoher_dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-navy-600/20 hover:bg-navy-600/30 border border-navy-500 text-navy-400 rounded-lg transition-colors">
+						X antes Twitter
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>

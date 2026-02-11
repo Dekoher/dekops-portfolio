@@ -1,0 +1,215 @@
+---
+interface BlogPost {
+	id: number;
+	title: string;
+	excerpt: string;
+	content: string;
+	category: string;
+	image: string;
+	tags: string[];
+	readingTime: number;
+	date: string;
+	author: string;
+	isPopular?: boolean;
+}
+
+const recentPosts: BlogPost[] = [
+	{
+		id: 1,
+		title: "Kubernetes Best Practices for Production Deployments",
+		excerpt: "Learn the essential strategies for deploying and managing Kubernetes clusters in production environments with high availability and security.",
+		content: "Kubernetes has become the standard for container orchestration. In this comprehensive guide, we explore best practices including resource management, security policies, monitoring, and scaling strategies.",
+		category: "Working Tips",
+		image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=600",
+		tags: ["#Kubernetes", "#DevOps", "#Infrastructure"],
+		readingTime: 8,
+		date: "2024-02-10",
+		author: "Diego Herrera"
+	},
+	{
+		id: 2,
+		title: "Mastering CI/CD Pipelines with GitHub Actions",
+		excerpt: "Discover how to build efficient continuous integration and deployment pipelines using GitHub Actions, reducing deployment times and improving reliability.",
+		content: "GitHub Actions provides a powerful workflow automation platform. We cover setting up workflows, managing secrets, caching dependencies, and implementing complex deployment strategies.",
+		category: "Working Tips",
+		image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600",
+		tags: ["#CI/CD", "#GitHub", "#Automation"],
+		readingTime: 10,
+		date: "2024-02-08",
+		author: "Diego Herrera"
+	}
+];
+
+const popularPosts: BlogPost[] = [
+	{
+		id: 3,
+		title: "Infrastructure as Code with Terraform",
+		readingTime: 7,
+		date: "2024-02-05",
+		image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=200",
+		category: "IaC",
+		excerpt: "",
+		content: "",
+		tags: [],
+		author: "",
+		isPopular: true
+	},
+	{
+		id: 4,
+		title: "Observability and Monitoring in Microservices",
+		readingTime: 9,
+		date: "2024-02-02",
+		image: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=200",
+		category: "SRE",
+		excerpt: "",
+		content: "",
+		tags: [],
+		author: "",
+		isPopular: true
+	},
+	{
+		id: 5,
+		title: "Container Security Best Practices",
+		readingTime: 6,
+		date: "2024-01-30",
+		image: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=200",
+		category: "Security",
+		excerpt: "",
+		content: "",
+		tags: [],
+		author: "",
+		isPopular: true
+	},
+	{
+		id: 6,
+		title: "Service Mesh Implementation with Istio",
+		readingTime: 11,
+		date: "2024-01-28",
+		image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=200",
+		category: "Architecture",
+		excerpt: "",
+		content: "",
+		tags: [],
+		author: "",
+		isPopular: true
+	}
+];
+
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+---
+
+<section id="news" class="py-20 px-6 bg-gradient-to-b from-navy-950 to-slate-950 border-t border-slate-800/50">
+	<div class="container mx-auto max-w-7xl">
+		<div class="text-center mb-16">
+			<h2 class="text-5xl font-bold mb-4">
+				<span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+					Twitter
+				</span>
+				<span class="bg-gradient-to-r from-blue-400 to-navy-400 bg-clip-text text-transparent">
+					{' '}Posts
+				</span>
+			</h2>
+			<p class="text-slate-400 text-lg max-w-2xl mx-auto">
+				Don't miss the latest updates from the DevOps / SRE / Cloud world
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2 space-y-6">
+				{recentPosts.map((post) => (
+					<article class="group bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden hover:border-navy-700 transition-all duration-300 hover:shadow-lg hover:shadow-navy-900/50">
+						<div class="flex flex-col sm:flex-row gap-6 p-6">
+							<div class="flex-shrink-0 sm:w-48 h-40">
+								<img
+									src={post.image}
+									alt={post.title}
+									class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+									loading="lazy"
+								/>
+							</div>
+
+							<div class="flex-grow flex flex-col justify-between">
+								<div>
+									<div class="flex items-center gap-3 mb-3">
+										<span class="px-3 py-1 bg-navy-900/50 border border-navy-700 rounded-full text-navy-300 text-xs font-semibold uppercase tracking-wide">
+											{post.category}
+										</span>
+										<span class="flex items-center gap-1 text-slate-500 text-sm">
+											<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+											</svg>
+											{post.readingTime} min read
+										</span>
+									</div>
+
+									<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+										{post.title}
+									</h3>
+
+									<p class="text-slate-400 mb-4 text-sm leading-relaxed line-clamp-2">
+										{post.excerpt}
+									</p>
+								</div>
+
+								<div class="flex flex-wrap gap-2">
+									{post.tags.map((tag) => (
+										<span class="text-xs text-slate-500 hover:text-blue-400 transition-colors cursor-pointer">
+											{tag}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+
+			<aside class="lg:col-span-1">
+				<div class="sticky top-24 bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+					<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+						<span class="text-blue-400">★</span>
+						Popular Posts
+					</h3>
+
+					<div class="space-y-5">
+						{popularPosts.map((post) => (
+							<article class="group cursor-pointer">
+								<div class="flex gap-3">
+									<div class="flex-shrink-0">
+										<img
+											src={post.image}
+											alt={post.title}
+											class="w-14 h-14 rounded-full object-cover border border-slate-700 group-hover:border-navy-600 transition-colors"
+											loading="lazy"
+										/>
+									</div>
+
+									<div class="flex-grow min-w-0">
+										<h4 class="font-semibold text-white group-hover:text-blue-400 transition-colors text-sm line-clamp-2">
+											{post.title}
+										</h4>
+
+										<div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+											<span class="flex items-center gap-1">
+												<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+												</svg>
+												{post.readingTime} min
+											</span>
+											<span>•</span>
+											<span>{formatDate(post.date)}</span>
+										</div>
+									</div>
+								</div>
+								<div class="h-px bg-gradient-to-r from-slate-700 to-transparent mt-3 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+							</article>
+						))}
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
