@@ -1,0 +1,95 @@
+---
+  import { Image } from 'astro:assets'
+	import logoDH from '../assets/logo-short-dekops.svg'
+---
+<header
+  class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slate-950/40 border-b border-navy-800/50"
+>
+  <nav class="container mx-auto py-4 max-w-7xl px-6">
+    <div class="flex items-center justify-between w-full">
+      <section class="flex items-center gap-4 w-full">
+        <Image src={logoDH} alt="logo-DH" class="w-auto h-10 logo-short" />
+        <div class="flex flex-col">
+          <h1 class="font-bold">Diego Herrera</h1>
+          <hr />
+          <p class="font-bold text-[10px]">DevOps | SRE Engineer</p>
+        </div>
+      </section>
+      <button
+        id="menu-btn"
+        class="block sm:hidden z-50 focus:outline-none"
+        aria-label="Toggle Menu"
+      >
+        <div id="hamburger-icon" class="space-y-1.5">
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300"
+          ></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300"
+          ></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300"
+          ></span>
+        </div>
+      </button>
+      <ul class="hidden sm:flex gap-8 text-sm">
+        <li>
+          <a
+            href="#home"
+            class="hover:text-blue-400 transition-colors flex w-max">Home</a>
+        </li>
+        <li>
+          <a
+            href="#news"
+            class="hover:text-blue-400 transition-colors flex w-max"
+            >Tech News</a>
+        </li>
+      </ul>
+    </div>
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 items-center justify-center hidden pt-4"
+    >
+      <ul class="flex flex-col gap-8 text-xl text-center">
+        <li>
+          <a href="#home" class="mobile-link hover:text-blue-400">Home</a>
+        </li>
+        <li>
+          <a href="#news" class="mobile-link hover:text-blue-400">Tech News</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<style>
+  .open #hamburger-icon span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .open #hamburger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .open #hamburger-icon span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .menu-active {
+    display: flex;
+		position: relative;
+    flex-direction: column;
+  }
+</style>
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-link');
+	
+  function toggleMenu() {
+    btn?.classList.toggle('open');
+    menu?.classList.toggle('menu-active');
+    // Prevenir scroll cuando el menú está abierto
+    document.body.classList.toggle('overflow-hidden');
+  }
+
+  btn?.addEventListener('click', toggleMenu);
+
+  // Cerrar menú al hacer click en un link
+  links.forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+</script>
