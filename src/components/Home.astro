@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import dekopsAvatar from '../assets/dekops-avatar.png';
+import linkedinLogo from '../assets/icons/linkedin.svg';
+import github from '../assets/icons/github.svg';
 ---
 
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -21,25 +23,36 @@ import dekopsAvatar from '../assets/dekops-avatar.png';
 
 			<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
 				<span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-					Transforming Frontend
+					Transforming
+					<span class="bg-gradient-to-r from-blue-400 via-navy-400 to-blue-500 bg-clip-text text-transparent">
+						Software Development
+					</span>
 				</span>
 				<br />
-				<span class="bg-gradient-to-r from-blue-400 via-navy-400 to-blue-500 bg-clip-text text-transparent">
-					Expertise into DevOps
+				<span>
+					Expertise into
+					<span class="bg-gradient-to-r from-blue-400 via-navy-400 to-blue-500 bg-clip-text text-transparent">
+						DevOps
+					</span>
 				</span>
 			</h1>
 
 			<p class="text-xl md:text-2xl text-slate-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-				Leveraging 7 years of frontend development experience to build robust, scalable infrastructure and streamline deployment pipelines
+				Leveraging 7 years of software development experience to build robust, scalable infrastructure and streamline deployment pipelines
 			</p>
 
 			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<a href="https://github.com/Dekoher" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 rounded-lg font-semibold text-white transition-all duration-300 backdrop-blur-sm flex gap-2">
+					View GitHub
+					<Image
+						src={github}
+						alt="Linkedin Diego Herrera"
+						class="bg-white h-[24px] w-[24px] p-[2px] rounded-sm"
+					/>
+				</a>
 				<a href="#news" class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-navy-600 hover:from-blue-500 hover:to-navy-500 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-105">
 					Read Latest Posts
 					<span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-				</a>
-				<a href="https://github.com/Dekoher" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 rounded-lg font-semibold text-white transition-all duration-300 backdrop-blur-sm">
-					View GitHub
 				</a>
 			</div>
 
@@ -49,7 +62,7 @@ import dekopsAvatar from '../assets/dekops-avatar.png';
 					<div class="text-slate-400">Years Experience</div>
 				</div>
 				<div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-navy-700 transition-colors">
-					<div class="text-3xl font-bold text-navy-400 mb-2">Frontend</div>
+					<div class="text-3xl font-bold text-navy-400 mb-2">Software development</div>
 					<div class="text-slate-400">to DevOps/SRE</div>
 				</div>
 				<div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-navy-700 transition-colors">
@@ -71,11 +84,11 @@ import dekopsAvatar from '../assets/dekops-avatar.png';
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 			<div class="relative">
-				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-navy-600 rounded-2xl blur opacity-25"></div>
+				<div class="absolute -inset-1 rounded-2xl blur opacity-25"></div>
         <Image
           src={dekopsAvatar}
           alt="Diego Herrera"
-          class="relative w-full rounded-2xl shadow-2xl object-cover h-96"
+          class="w-full rounded-2xl object-contain"
         />
 			</div>
 
@@ -93,7 +106,7 @@ import dekopsAvatar from '../assets/dekops-avatar.png';
 				</div>
 
 				<p class="text-lg text-slate-300 mb-6 leading-relaxed">
-					I'm a passionate engineer with 7 years of professional experience in frontend development, now transitioning into the exciting world of DevOps and Site Reliability Engineering. My journey from building beautiful user interfaces to architecting robust infrastructure has given me a unique perspective on bridging development and operations.
+					I'm a passionate engineer with 7 years of professional experience in software development, now transitioning into the exciting world of DevOps and Site Reliability Engineering. My journey from building beautiful user interfaces to architecting robust infrastructure has given me a unique perspective on bridging development and operations.
 				</p>
 
 				<div class="space-y-4 mb-8">
@@ -141,11 +154,22 @@ import dekopsAvatar from '../assets/dekops-avatar.png';
 				</div>
 
 				<div class="flex gap-3">
-					<a href="https://www.linkedin.com/in/diegoher-dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500 text-blue-400 rounded-lg transition-colors">
+					<a href="https://www.linkedin.com/in/diegoher-dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500 text-blue-400 rounded-lg transition-colors flex gap-2">
+						<Image
+							src={linkedinLogo}
+							alt="Linkedin Diego Herrera"
+							class="bg-white rounded h-[24px] w-[24px]"
+						/>
 						LinkedIn
 					</a>
-					<a href="https://x.com/Diegoher_dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-navy-600/20 hover:bg-navy-600/30 border border-navy-500 text-navy-400 rounded-lg transition-colors">
-						X antes Twitter
+					<a href="https://x.com/Diegoher_dev" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-navy-600/20 hover:bg-navy-600/30 border border-navy-500 text-navy-400 rounded-lg transition-colors flex gap-2">
+						<svg viewBox="24px 24px" aria-label="X" role="img" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-16y2uox r-lwhw9o" style="fill: #fff; width: 24px; height: 24px">
+							<g>
+								<path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z">
+								</path>
+							</g>
+						</svg>
+						Twitter
 					</a>
 				</div>
 			</div>
